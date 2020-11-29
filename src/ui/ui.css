@@ -1,0 +1,62 @@
+/* Modal */
+.modal-box {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  min-width: 400px;
+  background-color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.modal__fork {
+  font-size: 20px;
+  color: #888;
+  float: right;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-weight: 200;
+  font-size: 22px;
+  height: 44px;
+}
+
+.modal-text {
+  font-size: 16px;
+}
+
+.modal-footer {
+  height: 44px;
+}
+
+.modal-confirm,
+.modal-cancel {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 40px;
+}
+
+.modal-confirm {
+  left: 40px;
+}
+
+.modal-cancel {
+  right: 40px;
+}

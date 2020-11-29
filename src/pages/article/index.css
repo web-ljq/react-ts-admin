@@ -1,0 +1,83 @@
+/* article */
+#article {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+#article .article__item {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border-bottom: 1px solid #abcdef;
+}
+
+#article .article__item > div {
+  width: 25%;
+  font-weight: 200;
+  line-height: 50px;
+}
+
+.article__item-title {
+}
+
+.article__item-classify {
+}
+
+.article__item-createAt {
+}
+
+.article__item-btns > button {
+  border: 1px solid #abcdef;
+  width: 100px;
+  line-height: 40px;
+  color: #000;
+  font-size: 18px;
+  background: #ffffff60;
+  cursor: pointer;
+}
+
+/* articleForm */
+#article__form {
+  width: 100%;
+  height: 100%;
+}
+.article__form-title .title {
+  width: 600px;
+  height: 38px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.article__form-title .classify {
+  width: 100px;
+  margin-left: 20px;
+  height: 38px;
+  font-size: 16px;
+}
+
+.article__form-content > textarea {
+  width: 900px;
+  height: 600px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.article__form-createAt {
+  width: 160px;
+  height: 38px;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.article__form-btn {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 0;
+  border: 1px solid #abcdef;
+  border-radius: 8px;
+  float: right;
+}
