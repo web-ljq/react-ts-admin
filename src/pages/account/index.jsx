@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import axios from "axios";
+import ServerPath from "../../config/api"
 
 function Login({ history }) {
   const [type, setType] = useState("Login");
@@ -31,7 +32,7 @@ function Login({ history }) {
   async function submit() {
     if (type === "Login") {
       axios
-        .post("http://127.0.0.1:3001/api/login", {
+        .post(ServerPath.login, {
           username,
           password,
         })
@@ -42,7 +43,7 @@ function Login({ history }) {
         });
     } else {
       axios
-        .post("http://127.0.0.1:3001/api/register", {
+        .post(ServerPath.register, {
           username,
           password,
         })

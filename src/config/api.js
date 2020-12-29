@@ -1,7 +1,8 @@
-const apiUrl = "http://127.0.0.1:3001/api/";
+const apiUrl = "http://www.fleeting-time.com/api/";
 
 const serverPath = {
   // admin
+  login: apiUrl + "register", //注册
   login: apiUrl + "login", //检查用户名和密码
   loginCheck: apiUrl + "loginCheck", // isLogin
   addArticle: apiUrl + "addArticle", //添加文章

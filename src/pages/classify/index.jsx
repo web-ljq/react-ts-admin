@@ -19,7 +19,7 @@ const Classify = () => {
   async function getClassiys() {
     axios({
       method: "get",
-      url: "http://127.0.0.1:3001/api/classify",
+      url: ServePath.classify,
       withCredentials: true,
     }).then((res) => {
       setClassifys(res.data.data);
@@ -29,7 +29,7 @@ const Classify = () => {
   const addClassify = () => {
     setType("新增分类");
     axios
-      .post("http://127.0.0.1:3001/api/addClassify", {
+      .post(ServePath.addClassify, {
         classifyName,
         instructions,
       })
@@ -49,7 +49,7 @@ const Classify = () => {
   async function delClassify(_id) {
     axios({
       method: "get",
-      url: "http://127.0.0.1:3001/api/delClassify?_id=" + _id,
+      url: ServePath.delClassify + _id,
     }).then((res) => {
       if (res.data.errno === 0) {
         getClassiys();
