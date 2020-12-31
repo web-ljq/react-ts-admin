@@ -40,7 +40,6 @@ const ArticleForm = ({ history }) => {
   // 通过文章id获取数据然后进行修改
   const getArticleById = (id) => {
     axios(ServerPath.getArticleById + id, {
-      withCredentials: true,
       header: { "Access-Control-Allow-Origin": "*" },
     }).then((res) => {
       const data = res.data.data;
@@ -57,7 +56,6 @@ const ArticleForm = ({ history }) => {
     axios({
       method: "get",
       url: ServerPath.classify,
-      withCredentials: true,
     }).then((res) => {
       setClassifys(res.data.data);
     });
@@ -73,7 +71,6 @@ const ArticleForm = ({ history }) => {
         classify: selectedType,
         createdAt,
       },
-      withCredentials: true,
     })
       .then((res) => {
         if (res.data.errno === 0) {
