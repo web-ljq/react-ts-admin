@@ -20,7 +20,6 @@ const Classify = () => {
     axios({
       method: "get",
       url: ServePath.classify,
-      withCredentials: true,
     }).then((res) => {
       setClassifys(res.data.data);
     });
