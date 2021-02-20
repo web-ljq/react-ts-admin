@@ -34,7 +34,10 @@ const ArticleList = () => {
   };
 
   return (
-    <div id="article">
+    <div className="article__list">
+      <button>
+        <Link to="/home/articleForm">添加文章</Link>
+      </button>
       {articleList.map((item, index) => {
         return (
           <div key={index} className="article__item">

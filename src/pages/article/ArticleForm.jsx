@@ -10,8 +10,8 @@ const ArticleForm = ({ history }) => {
   const [articleTitle, setArticleTitle] = useState(""); //文章标题
   const [articleContent, setArticleContent] = useState(""); //markdown的编辑内容
   const [markdownContent, setMarkdownContent] = useState("预览内容"); //html内容
-  const [createdAt, setCreatedAt] = useState(); //发布日期
-  const [updatedAt, setUpdatedAt] = useState(); //修改日志的日期
+  const [createdAt, setCreatedAt] = useState("createdAt"); //发布日期
+  const [updatedAt, setUpdatedAt] = useState("updatedAt"); //修改日志的日期
   const [classifys, setClassifys] = useState([]); // 文章分类信息
   const [selectedType, setSelectType] = useState(); //选择的文章类别
 
@@ -123,51 +123,79 @@ const ArticleForm = ({ history }) => {
   };
 
   return (
-    <div id="article__form">
-      <div className="article__form-title">
-        <input
-          className="title"
-          type="text"
-          placeholder="title"
-          defaultValue={articleTitle}
-          onChange={(e) => setArticleTitle(e.target.value)}
-        />
-        <select
-          className="classify"
-          defaultValue={selectedType}
-          onChange={selectTypeHandler}
-        >
-          <option value="--">------</option>
-          {classifys.map((item, index) => {
-            return (
-              <option key={index} value={item.classifyName}>
-                {item.classifyName}
-              </option>
-            );
-          })}
-        </select>
-        <input
-          className="article__form-createAt"
-          type="date"
-          placeholder="createAt"
-          defaultValue={createdAt}
-          onChange={(e) => onChaneCreatedAt(e)}
-        />
-        <div className="article__form-btn" onClick={artAddOrUpdate}>
-          {type}
+    <div className="article__form">
+      <div className="article__form_left">
+        <div className="flex-box">
+          <div className="title">
+            <input
+              type="text"
+              placeholder="title"
+              defaultValue={articleTitle}
+              onChange={(e) => setArticleTitle(e.target.value)}
+            />
+          </div>
+          <div className="category">
+            <select defaultValue={selectedType} onChange={selectTypeHandler}>
+              <option value="--">category</option>
+              <option value="--">------</option>
+              {classifys.map((item, index) => {
+                return (
+                  <option key={index} value={item.classifyName}>
+                    {item.classifyName}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="author">
+            <select defaultValue={selectedType} onChange={selectTypeHandler}>
+              <option value="--">author</option>
+              <option value="--">------</option>
+              {classifys.map((item, index) => {
+                return (
+                  <option key={index} value={item.classifyName}>
+                    {item.classifyName}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="btn" onClick={artAddOrUpdate}>
+            {type}
+          </div>
+        </div>
+        <div className="content">
+          <div className="markdown-content">
+            <textarea
+              type="text"
+              placeholder="content"
+              defaultValue={articleContent}
+              onChange={(e) => changeContent(e)}
+            />
+          </div>
+          <div
+            className="show-html"
+            dangerouslySetInnerHTML={{ __html: markdownContent }}
+          ></div>
         </div>
       </div>
-      <div className="article__form-content">
-        <textarea
-          type="text"
-          placeholder="content"
-          defaultValue={articleContent}
-          onChange={(e) => changeContent(e)}
-        />
-        {/* <div
-          className="show-html"
-          dangerouslySetInnerHTML={{ __html: markdownContent }}
-        ></div> */}
+      <div className="article__form_right">
+        <div className="img"></div>
+        <div className="time">
+          <input
+            className="createdAt"
+            type="date"
+            placeholder="createdAt"
+            defaultValue={createdAt}
+            onChange={(e) => onChaneCreatedAt(e)}
+          />
+          <input
+            className="updatedAt"
+            type="date"
+            defaultValue={updatedAt}
+            onChange={(e) => onChaneCreatedAt(e)}
+          />
+        </div>
       </div>
     </div>
   );

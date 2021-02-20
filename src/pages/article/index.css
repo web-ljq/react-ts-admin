@@ -1,17 +1,16 @@
 /* article */
-#article {
+.admin__wrapper .route__view_container .container .article__list {
   width: 100%;
   height: 100%;
-  padding: 10px;
 }
-#article .article__item {
+.article__list .article__item {
   width: 100%;
   height: 50px;
   display: flex;
   border-bottom: 1px solid #abcdef;
 }
 
-#article .article__item > div {
+.article__list .article__item > div {
   width: 25%;
   font-weight: 200;
   line-height: 50px;
@@ -37,47 +36,179 @@
 }
 
 /* articleForm */
-#article__form {
+.admin__wrapper .route__view_container .container .article__form {
   width: 100%;
+  margin: 0 auto;
   height: 100%;
+  display: flex;
+  flex-direction: row;
 }
-.article__form-title .title {
-  width: 600px;
-  height: 38px;
+.article__form_left .flex-box {
+  display: flex;
+}
+.article__form_left .title input {
+  width: 500px;
+  height: 30px;
   padding: 0 10px;
-  font-size: 16px;
+  border: 0.5px solid #abcdef;
 }
-.article__form-title .classify {
+.article__form_left .category select {
   width: 100px;
   margin-left: 20px;
-  height: 38px;
-  font-size: 16px;
+  height: 30px;
+  border: 0.5px solid #abcdef;
 }
-
-.article__form-content > textarea {
-  width: 900px;
-  height: 600px;
+.article__form_left .author select {
+  width: 100px;
+  margin-left: 20px;
+  height: 30px;
+  border: 0.5px solid #abcdef;
+}
+.article__form_left .btn {
+  width: 100px;
+  margin-left: 20px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #0b60b6;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 30px;
+  border: 0.5px solid #abcdef;
+}
+.article__form_left .content {
+  width: 880px;
+  height: 550px;
+  display: flex;
   margin-top: 20px;
+  font-size: 16px !important;
+}
+.article__form_left .content .markdown-content textarea,
+.article__form_left .content .show-html {
+  border-radius: 8px;
+}
+.article__form_left .content .markdown-content {
+  margin-right: 20px;
+}
+.article__form_left .content .markdown-content textarea {
+  min-width: 408px;
+  max-width: 402.5px;
+  max-height: 550px;
+  min-height: 550px;
+  padding: 10px;
+  border: 1px solid #abcdef;
+}
+.article__form_left .content .show-html {
+  width: 410px;
+  height: 550px;
+  background-color: #ccc;
+  padding-left: -20xp;
+
   padding: 10px;
 }
-
-.article__form-createAt {
-  width: 160px;
-  height: 38px;
+.article__form_right {
+  width: 400px;
+  padding-left: 30px;
+}
+.article__form_right .time .createdAt,
+.article__form_right .time .updatedAt {
+  width: 130px;
+  height: 30px;
+  border: 0.5px solid #abcdef;
+  padding: 0 5px;
+}
+.article__form_right .time .updatedAt {
   margin-left: 20px;
-  font-size: 16px;
-  color: #ccc;
 }
 
-.article__form-btn {
-  width: 100px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  font-size: 20px;
-  cursor: pointer;
-  border: 0;
-  border: 1px solid #abcdef;
-  border-radius: 8px;
-  float: right;
+/* import */
+.show-html {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 745px;
+  background-color: #f0f0f0;
+  overflow: auto;
+}
+
+.show-html h1 {
+  font-size: 30px;
+}
+
+.show-html h2 {
+  font-size: 28px;
+  border-bottom: 1px solid #cbcbcb;
+}
+.show-html h3 {
+  font-size: 24px;
+}
+
+.show-html pre {
+  display: block;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 5px;
+}
+.show-html pre > code {
+  color: #000;
+  background-color: #f0f0f0;
+  margin-top: 10px;
+}
+.show-html code {
+  background-color: #fff5f5;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 3px 3px;
+  color: #ff502c;
+}
+.show-html blockquote {
+  border-left: 4px solid #cbcbcb;
+  padding: 10px 10px 10px 30px;
+  background-color: #f8f8f8;
+}
+.introduce-html {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+
+  background-color: #f0f0f0;
+}
+
+.introduce-html h1 {
+  font-size: 30px;
+}
+
+.introduce-html h2 {
+  font-size: 28px;
+  border-bottom: 1px solid #cbcbcb;
+}
+.introduce-html h3 {
+  font-size: 24px;
+}
+
+.introduce-html pre {
+  display: block;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 5px;
+}
+.introduce-html pre > code {
+  color: #000;
+  background-color: #f0f0f0;
+}
+.introduce-html code {
+  background-color: #fff5f5;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0px 3px;
+  color: #ff502c;
+}
+.introduce-html blockquote {
+  border-left: 4px solid #cbcbcb;
+  padding: 10px 10px 10px 30px;
+  background-color: #f8f8f8;
+}
+.date-select {
+  margin-top: 10px;
 }
