@@ -14,7 +14,7 @@ const ArticleList = () => {
   async function getArticleList() {
     axios({
       method: "get",
-      url: "http://127.0.0.1:3001/api/articleList",
+      url: ServerPath.artilceList,
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGpxIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2MTQwMDAzMTksImV4cCI6MTYxNDAwMzkxOX0.6d9-jMGNdmyue22r5C8XGLWy-YmOl0g_EpwtQjbTHho",

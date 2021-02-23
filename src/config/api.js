@@ -1,7 +1,7 @@
 import LeaveMessage from "../pages/leaveMessage";
 
-// const apiUrl = "http://www.fleeting-time.com/api/";
-const apiUrl = "http://127.0.0.1:3001/api/";
+const apiUrl = "http://www.fleeting-time.com/api/";
+// const apiUrl = "http://127.0.0.1:3001/api/";
 
 const serverPath = {
   // admin
