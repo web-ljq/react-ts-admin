@@ -1,134 +1,104 @@
 /* article */
-.admin__wrapper .route__view_container .container .article__list {
-  width: 100%;
-  height: 100%;
+.article__list .article__item-header {
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  border-bottom: 1px solid #999;
+  padding: 10px 0;
+}
+.article__list .article__item-header span {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
 }
 .article__list .article__item {
   width: 100%;
-  height: 50px;
-  display: flex;
-  border-bottom: 1px solid #abcdef;
+  height: 35px;
+  line-height: 35px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
-
-.article__list .article__item > div {
+.article__list .article__item > span {
+  display: inline-block;
+  text-align: center;
   width: 25%;
   font-weight: 200;
-  line-height: 50px;
+  line-height: 38px;
 }
-
-.article__item-title {
-}
-
-.article__item-classify {
-}
-
-.article__item-createAt {
-}
-
-.article__item-btns > button {
-  border: 1px solid #abcdef;
-  width: 100px;
-  line-height: 40px;
-  color: #000;
+.article__list .article__item > span:last-child {
+  color: red;
+  text-decoration: underline;
   font-size: 18px;
-  background: #ffffff60;
   cursor: pointer;
 }
 
 /* articleForm */
-.admin__wrapper .route__view_container .container .article__form {
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
+.article__form .item {
+  margin-bottom: 20px;
+  height: 50px;
 }
-.article__form_left .flex-box {
-  display: flex;
+.article__form .item span {
+  margin-right: 10px;
+  color: #999;
 }
-.article__form_left .title input {
-  width: 500px;
+.article__form .item input {
+  width: 285px;
   height: 30px;
-  padding: 0 10px;
-  border: 0.5px solid #abcdef;
-}
-.article__form_left .category select {
-  width: 100px;
-  margin-left: 20px;
-  height: 30px;
-  border: 0.5px solid #abcdef;
-}
-.article__form_left .author select {
-  width: 100px;
-  margin-left: 20px;
-  height: 30px;
-  border: 0.5px solid #abcdef;
-}
-.article__form_left .btn {
-  width: 100px;
-  margin-left: 20px;
-  line-height: 30px;
-  text-align: center;
-  background-color: #0b60b6;
+  border: 1px solid #ddd;
+  padding-left: 15px;
   border-radius: 8px;
+}
+.article__form .category select {
+  width: 300px;
+  height: 30px;
+  border: 1px solid #ddd;
+  padding-left: 15px;
+  border-radius: 4px;
+}
+.article__form .content h5 {
+  height: 44px;
+  font-size: 22px;
+}
+.article__form .content .wrap {
+  /* border: 1px solid #ddd; */
+  height: 680px;
+  display: flex;
+  justify-content: center;
+}
+.article__form .content .wrap textarea {
+  width: calc(45% - 20px);
+  margin: 0 2.5%;
+  padding: 10px;
+  font-size: 16px;
+  color: #000;
+  line-height: 26px;
+  letter-spacing: 0.1rem;
+  border-radius: 8px;
+}
+.article__form .content .wrap .show-html {
+  width: calc(45% - 30px);
+  margin: 0 2.5%;
+}
+.article__form .button {
+  position: fixed;
+  top: 106px;
+  right: 80px;
+  border: 1px solid #ddd;
+  padding: 3px 10px;
   cursor: pointer;
-  height: 30px;
-  border: 0.5px solid #abcdef;
+  border-radius: 5px;
 }
-.article__form_left .content {
-  width: 880px;
-  height: 550px;
-  display: flex;
-  margin-top: 20px;
-  font-size: 16px !important;
+.article__form .button:hover {
+  background-color: #abcdef;
 }
-.article__form_left .content .markdown-content textarea,
-.article__form_left .content .show-html {
-  border-radius: 8px;
-}
-.article__form_left .content .markdown-content {
-  margin-right: 20px;
-}
-.article__form_left .content .markdown-content textarea {
-  min-width: 408px;
-  max-width: 402.5px;
-  max-height: 550px;
-  min-height: 550px;
-  padding: 10px;
-  border: 1px solid #abcdef;
-}
-.article__form_left .content .show-html {
-  width: 410px;
-  height: 550px;
-  background-color: #ccc;
-  padding-left: -20xp;
-
-  padding: 10px;
-}
-.article__form_right {
-  width: 400px;
-  padding-left: 30px;
-}
-.article__form_right .time .createdAt,
-.article__form_right .time .updatedAt {
-  width: 130px;
-  height: 30px;
-  border: 0.5px solid #abcdef;
-  padding: 0 5px;
-}
-.article__form_right .time .updatedAt {
-  margin-left: 20px;
-}
-
 /* import */
 .show-html {
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 16px;
-  height: 745px;
   background-color: #f0f0f0;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .show-html h1 {

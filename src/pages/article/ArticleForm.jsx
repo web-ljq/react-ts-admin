@@ -8,12 +8,13 @@ const ArticleForm = ({ history }) => {
   const [type, setType] = useState("添加文章");
   const [articleId, setArticleId] = useState(0); // 文章的ID，如果是0说明是新增加，如果不是0，说明是修改
   const [articleTitle, setArticleTitle] = useState(""); //文章标题
+  const [imgUrl, setImgUrl] = useState(""); //图片url
   const [articleContent, setArticleContent] = useState(""); //markdown的编辑内容
   const [markdownContent, setMarkdownContent] = useState("预览内容"); //html内容
   const [createdAt, setCreatedAt] = useState("createdAt"); //发布日期
   const [updatedAt, setUpdatedAt] = useState("updatedAt"); //修改日志的日期
-  const [classifys, setClassifys] = useState([]); // 文章分类信息
-  const [selectedType, setSelectType] = useState(); //选择的文章类别
+  const [categories, setCategory] = useState([]); // 文章分类信息
+  const [selectedType, setSelectType] = useState(""); //选择的文章类别
 
   marked.setOptions({
     renderer: marked.Renderer(),
@@ -27,7 +28,7 @@ const ArticleForm = ({ history }) => {
   });
 
   useEffect(() => {
-    getClassify();
+    getCategory();
     //获得文章ID
     let tmpId = history.location.search.split("id=")[1];
     if (tmpId) {
@@ -44,20 +45,21 @@ const ArticleForm = ({ history }) => {
     }).then((res) => {
       const data = res.data.data;
       setArticleTitle(data.title);
+      setImgUrl(data.imgUrl);
       setArticleContent(data.content);
       const html = marked(data.content);
       setMarkdownContent(html);
       setCreatedAt(data.createdAt);
-      setSelectType(data.classify);
+      setSelectType(data.category);
     });
   };
 
-  const getClassify = () => {
+  const getCategory = () => {
     axios({
       method: "get",
-      url: ServerPath.classify,
+      url: ServerPath.category,
     }).then((res) => {
-      setClassifys(res.data.data);
+      setCategory(res.data.data);
     });
   };
 
@@ -66,15 +68,17 @@ const ArticleForm = ({ history }) => {
       method: "post",
       url: ServerPath.addArticle,
       data: {
+        username: "ljq",
         title: articleTitle,
+        imgUrl,
         content: articleContent,
-        classify: selectedType,
+        category: selectedType,
         createdAt,
       },
     })
       .then((res) => {
         if (res.data.errno === 0) {
-          history.push("/home/articleList");
+          history.push("/admin/articleList");
         }
       })
       .catch((e) => {
@@ -89,13 +93,14 @@ const ArticleForm = ({ history }) => {
       data: {
         _id: articleId,
         title: articleTitle,
+        imgUrl,
         content: articleContent,
         classify: selectedType,
         createdAt,
       },
     }).then((res) => {
       if (res.data.errno === 0) {
-        history.push("/home/articleList");
+        history.push("/admin/articleList");
       }
     });
   }
@@ -118,84 +123,80 @@ const ArticleForm = ({ history }) => {
     setCreatedAt(e.target.value);
   };
 
-  const selectTypeHandler = (e) => {
-    setSelectType(e.target.value);
-  };
-
   return (
     <div className="article__form">
-      <div className="article__form_left">
-        <div className="flex-box">
-          <div className="title">
-            <input
-              type="text"
-              placeholder="title"
-              defaultValue={articleTitle}
-              onChange={(e) => setArticleTitle(e.target.value)}
-            />
-          </div>
-          <div className="category">
-            <select defaultValue={selectedType} onChange={selectTypeHandler}>
-              <option value="--">category</option>
-              <option value="--">------</option>
-              {classifys.map((item, index) => {
-                return (
-                  <option key={index} value={item.classifyName}>
-                    {item.classifyName}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="author">
-            <select defaultValue={selectedType} onChange={selectTypeHandler}>
-              <option value="--">author</option>
-              <option value="--">------</option>
-              {classifys.map((item, index) => {
-                return (
-                  <option key={index} value={item.classifyName}>
-                    {item.classifyName}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="btn" onClick={artAddOrUpdate}>
-            {type}
-          </div>
-        </div>
-        <div className="content">
-          <div className="markdown-content">
-            <textarea
-              type="text"
-              placeholder="content"
-              defaultValue={articleContent}
-              onChange={(e) => changeContent(e)}
-            />
-          </div>
+      <div className="title item">
+        <span>标题：</span>
+        <input
+          type="text"
+          name="title"
+          placeholder="标题"
+          value={articleTitle}
+          onChange={(e) => setArticleTitle(e.target.value)}
+        />
+      </div>
+      <div className="category item">
+        <span>分类：</span>
+        <select
+          name="title"
+          defaultvalue={selectedType}
+          onChange={(e) => setSelectType(e.target.value)}
+        >
+          <option value="">文章分类</option>
+          {categories.map((item) => (
+            <option value={item.category}>{item.category}</option>
+          ))}
+        </select>
+      </div>
+      <div className="author item">
+        <span>作者：</span>
+        <input
+          type="text"
+          name="author"
+          value="ljq"
+          placeholder="作者"
+          disabled
+        />
+      </div>
+      <div className="article-img item">
+        <span>图片：</span>
+        <input
+          type="text"
+          name="imgUrl"
+          placeholder="img-url"
+          value={imgUrl}
+          onChange={(e) => setImgUrl(e.target.value)}
+        />
+        <span style={{ fontSize: 14, color: "red", marginLeft: 10 }}>
+          目前只支持上传图片url
+        </span>
+      </div>
+      <div className="date item">
+        <span>时间：</span>
+        <input
+          value="2021/2/2"
+          type="date"
+          onChange={(e) => onChaneCreatedAt(e)}
+        />
+      </div>
+      <div className="content">
+        <h5>内容：</h5>
+        <div className="wrap">
+          <textarea
+            name="content"
+            cols="80"
+            rows="40"
+            value={articleContent}
+            onChange={(e) => changeContent(e)}
+          ></textarea>
           <div
             className="show-html"
             dangerouslySetInnerHTML={{ __html: markdownContent }}
           ></div>
         </div>
       </div>
-      <div className="article__form_right">
-        <div className="img"></div>
-        <div className="time">
-          <input
-            className="createdAt"
-            type="date"
-            placeholder="createdAt"
-            defaultValue={createdAt}
-            onChange={(e) => onChaneCreatedAt(e)}
-          />
-          <input
-            className="updatedAt"
-            type="date"
-            defaultValue={updatedAt}
-            onChange={(e) => onChaneCreatedAt(e)}
-          />
-        </div>
+      <div className="button" onClick={artAddOrUpdate}>
+        {type}
       </div>
     </div>
   );

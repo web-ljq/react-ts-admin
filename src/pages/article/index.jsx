@@ -14,12 +14,20 @@ const ArticleList = () => {
   async function getArticleList() {
     axios({
       method: "get",
-      url: ServerPath.artilceList,
-    }).then((res) => {
-      if (res.data.errno === 0) {
-        setArticleList(res.data.data);
-      }
-    });
+      url: "http://127.0.0.1:3001/api/articleList",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGpxIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2MTQwMDAzMTksImV4cCI6MTYxNDAwMzkxOX0.6d9-jMGNdmyue22r5C8XGLWy-YmOl0g_EpwtQjbTHho",
+      },
+    })
+      .then((res) => {
+        if (res.data.errno === 0) {
+          setArticleList(res.data.data);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   const delArticle = (_id) => {
@@ -36,28 +44,34 @@ const ArticleList = () => {
   return (
     <div className="article__list">
       <button>
-        <Link to="/home/articleForm">添加文章</Link>
+        <Link to="/admin/articleForm">添加文章</Link>
       </button>
-      {articleList.map((item, index) => {
-        return (
-          <div key={index} className="article__item">
-            <div className="article__item-title">{item.title}</div>
-            <div className="article__item-classify">{item.classify}</div>
-            <div className="article__item-createAt">{item.createdAt}</div>
-            <div className="article__item-btns">
-              <button>
-                <Link to={`/home/articleForm?_id=${item._id}`}>edit</Link>
-              </button>
-              <button
-                style={{ marginLeft: "20px" }}
-                onClick={() => delArticle(item._id)}
-              >
-                del
-              </button>
+      <div style={{ border: "1px solid #ddd", marginTop: 20 }}>
+        <div className="article__item-header">
+          <span>标题</span>
+          <span>分类</span>
+          <span>时间</span>
+          <span>操作</span>
+        </div>
+        {articleList.map((item, index) => {
+          return (
+            <div key={index} className="article__item">
+              <span>{item.title}</span>
+              <span>{item.category}</span>
+              <span>{item.createdAt}</span>
+              <span>
+                <Link to={`/admin/articleForm?_id=${item._id}`}>edit</Link>
+                <span
+                  style={{ marginLeft: "20px" }}
+                  onClick={() => delArticle(item._id)}
+                >
+                  del
+                </span>
+              </span>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

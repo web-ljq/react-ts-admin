@@ -1,4 +1,7 @@
-const apiUrl = "http://www.fleeting-time.com/api/";
+import LeaveMessage from "../pages/leaveMessage";
+
+// const apiUrl = "http://www.fleeting-time.com/api/";
+const apiUrl = "http://127.0.0.1:3001/api/";
 
 const serverPath = {
   // admin
@@ -10,18 +13,22 @@ const serverPath = {
   updateArticle: apiUrl + "updateArticle", //修改文章
   artilceList: apiUrl + "articleList", //获取文章列表
   getArticleById: apiUrl + "getArticleById?_id=", //获取一篇文章
-  // classify
-  addClassify: apiUrl + "addClassify", //添加文章分类
-  delClassify: apiUrl + "delClassify?_id=", //删除文章分类
-  updateClassify: apiUrl + "updateClassify", //修改文章分类
-  getClassifyById: apiUrl + "getClassifyById?_id=", //获取文章分类ById
-  classify: apiUrl + "classify", //获取文章分类
+  // category
+  addCategory: apiUrl + "addCategory", //添加文章分类
+  delCategory: apiUrl + "delCategory?_id=", //删除文章分类
+  updateCategory: apiUrl + "updateCategory", //修改文章分类
+  getCategoryById: apiUrl + "getCategoryById?_id=", //获取文章分类ById
+  category: apiUrl + "category", //获取文章分类
+  // leaveMessage
+  getLeaveMessage: apiUrl + "addLeaveMessage", // 添加留言
+  getLeaveMessage: apiUrl + "delLeaveMessage", // 删除列表
+  getLeaveMessage: apiUrl + "leaveMessageList", // 留言列表
 
   // frontend
   getArtList: apiUrl + "getArtList",
-  getClassify: apiUrl + "getClassify",
+  getCategory: apiUrl + "getCategory",
   getArtById: apiUrl + "getArtById?_id=",
-  getArtByClassify: apiUrl + "getArtByClassify?classify=",
+  getArtByCategory: apiUrl + "getArtByCategory?category=",
 };
 
 export default serverPath;

@@ -8,36 +8,36 @@ const Classify = () => {
   const [visible, setVisible] = useState(false);
   const [type, setType] = useState("新增分类");
   const [_id, setId] = useState("");
-  const [classifyName, setClassifyName] = useState("");
+  const [category, setCategory] = useState("");
   const [instructions, setInstructions] = useState("");
-  const [classifys, setClassifys] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getClassiys();
+    getCategory();
   }, []);
 
-  async function getClassiys() {
+  async function getCategory() {
     axios({
       method: "get",
-      url: ServePath.classify,
+      url: ServePath.category,
     }).then((res) => {
-      setClassifys(res.data.data);
+      setCategories(res.data.data);
     });
   }
 
-  const addClassify = () => {
+  const addCategory = () => {
     setType("新增分类");
     axios
-      .post(ServePath.addClassify, {
-        classifyName,
+      .post(ServePath.addCategory, {
+        category,
         instructions,
       })
       .then((res) => {
         if (res.data.errno === 0) {
           setVisible(false);
-          setClassifyName("");
+          setCategory("");
           setInstructions("");
-          getClassiys();
+          getCategory();
         }
       })
       .catch((e) => {
@@ -45,18 +45,18 @@ const Classify = () => {
       });
   };
 
-  async function delClassify(_id) {
+  async function delCategory(_id) {
     axios({
       method: "get",
-      url: ServePath.delClassify + _id,
+      url: ServePath.delCategory + _id,
     }).then((res) => {
       if (res.data.errno === 0) {
-        getClassiys();
+        getCategory();
       }
     });
   }
 
-  const getClassifyById = (_id) => {
+  const getCategoryById = (_id) => {
     setVisible(true);
     setType("编辑分类");
     axios({
@@ -64,36 +64,36 @@ const Classify = () => {
       url: ServePath.getClassifyById + _id,
     }).then((res) => {
       if (res.data.errno === 0) {
-        setClassifyName(res.data.data.classifyName);
+        setCategory(res.data.data.category);
         setInstructions(res.data.data.instructions);
         setId(_id);
       }
     });
   };
 
-  async function updateClassify() {
+  async function updateCategory() {
     axios({
       method: "POST",
-      url: ServePath.updateClassify,
+      url: ServePath.updateCategory,
       data: {
         _id,
-        classifyName,
+        category,
         instructions,
       },
     }).then((res) => {
-      setClassifyName("");
+      setCategory("");
       setInstructions("");
       setVisible(false);
-      getClassiys();
+      getCategory();
       setType("新增分类");
     });
   }
 
   const handleOk = () => {
     if (type === "编辑分类") {
-      updateClassify();
+      updateCategory();
     } else {
-      addClassify();
+      addCategory();
     }
   };
 
@@ -102,13 +102,13 @@ const Classify = () => {
   };
 
   const onCancel = () => {
-    setClassifyName("");
+    setCategory("");
     setInstructions("");
     setVisible(false);
   };
 
   const onChaneClassifyName = (e) => {
-    setClassifyName(e.target.value);
+    setCategory(e.target.value);
   };
 
   const onChaneInstructions = (e) => {
@@ -122,7 +122,7 @@ const Classify = () => {
           onChange={(e) => onChaneClassifyName(e)}
           type="text"
           placeholder="分类名称"
-          defaultValue={classifyName}
+          defaultValue={category}
         />
         <textarea
           onChange={(e) => onChaneInstructions(e)}
@@ -136,20 +136,20 @@ const Classify = () => {
 
   return (
     <>
-      <div className="classify">
-        {classifys.map((item, index) => {
+      <div className="category">
+        {categories.map((item, index) => {
           return (
-            <div key={index} className="classofy__card">
-              <h3>{item.classifyName}</h3>
+            <div key={index} className="category__card">
+              <h3>{item.category}</h3>
               <p>{item.instructions}</p>
               <div className="buttons">
-                <span onClick={() => getClassifyById(item._id)}>edit</span>
-                <span onClick={() => delClassify(item._id)}>del</span>
+                <span onClick={() => getCategoryById(item._id)}>edit</span>
+                <span onClick={() => delCategory(item._id)}>del</span>
               </div>
             </div>
           );
         })}
-        <div className="classofy__card-add" onClick={onShowModal}>
+        <div className="category__card-add" onClick={onShowModal}>
           Add
         </div>
       </div>

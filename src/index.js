@@ -4,12 +4,22 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./global.css";
 import "./component.css";
 import Header from "./components/Header";
-import UserList from "./pages/account";
+import UserinfoEdit from "./pages/account";
 import Login from "./pages/account/login";
 import Register from "./pages/account/register";
 import ArticleList from "./pages/article";
 import ArticleForm from "./pages/article/ArticleForm";
-import Classify from "./pages/classify";
+import Category from "./pages/category";
+import LeaveMessage from "./pages/leaveMessage";
+import Home from "./pages/home";
+import axios from "axios";
+
+let token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGpxIiwicGFzc3dvcmQiOiIxMjMiLCJpYXQiOjE2MTQwMDAzMTksImV4cCI6MTYxNDAwMzkxOX0.6d9-jMGNdmyue22r5C8XGLWy-YmOl0g_EpwtQjbTHho";
+
+axios.defaults.withCredentials = false;
+axios.defaults.headers.common["token"] = token;
+axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8"; //配置请求头
 
 const date = new Date();
 
@@ -33,26 +43,26 @@ const Layout = () => {
         </header>
         <ul>
           <li>
-            <Link to="/home">
+            <Link to="/admin/home">
               <i className="fa fa-home"></i>
               <span>控制台</span>
             </Link>
           </li>
           <li>
-            <Link to="/home/articleList">
+            <Link to="/admin/articleList">
               <i className="fa fa-book"></i>
               <span>文章列表</span>
             </Link>
           </li>
           <li>
-            <Link to="/home/classify">
+            <Link to="/admin/classify">
               <i className="fa fa-sitemap"></i>
               <span>分类管理</span>
             </Link>
           </li>
           <li>
-            <Link to="/home/userList">
-              <i className="fa fa-user"></i> <span>用户管理</span>
+            <Link to="/admin/leave-message">
+              <i className="fa fa-bars"></i> <span>留言管理</span>
             </Link>
           </li>
         </ul>
@@ -62,10 +72,12 @@ const Layout = () => {
           <Header />
         </div>
         <div className="container">
-          <Route path="/home/articleForm" component={ArticleForm} />
-          <Route path="/home/articleList" component={ArticleList} />
-          <Route path="/home/classify" component={Classify} />
-          <Route path="/home/userList" component={UserList} />
+          <Route path="/admin/home" component={Home} />
+          <Route path="/admin/articleForm" component={ArticleForm} />
+          <Route path="/admin/articleList" component={ArticleList} />
+          <Route path="/admin/classify" component={Category} />
+          <Route path="/admin/userinfo-edit" component={UserinfoEdit} />
+          <Route path="/admin/leave-message" component={LeaveMessage} />
         </div>
         <footer className="footer">
           © 2020-{date.getFullYear()} A Leaf Knows The Autum
@@ -79,9 +91,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/home" component={Layout} />
-        <Route path="/" component={Login} />
+        <Route path="/admin" component={Layout} />
         <Route path="/register" component={Register} />
+        <Route path="/" component={Login} />
       </Switch>
     </Router>
   );

@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import axios from "axios";
 import ServerPath from "../../config/api";
+import { Link } from "react-router-dom";
 
 function Register({ history }) {
   const [username, setUaername] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    setUaername("");
-    setPassword("");
-  }, []);
 
   const onInputUsername = (e) => {
     setUaername(e.target.value);
@@ -64,7 +60,9 @@ function Register({ history }) {
       </div>
       <div className="right-container">
         <div className="regist-container">
-          <span className="regist">Regist</span>
+          <span className="regist">
+            <Link to="/">Login</Link>
+          </span>
         </div>
         <div className="action-container">
           <span className="submit" onClick={submit}>

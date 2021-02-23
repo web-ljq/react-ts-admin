@@ -13,6 +13,11 @@ const Header = () => {
             <a href="">编辑</a>
           </li> */}
           <li>
+            <Link to="/admin/userinfo-edit">
+              <i className="fa fa-user"></i> <span>用户信息</span>
+            </Link>
+          </li>
+          <li>
             <a href="http://www.fleeting-time.com">网站主页</a>
           </li>
           <li>

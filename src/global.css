@@ -175,11 +175,80 @@ body {
   background-color: #063146;
   transition: all 0.5s;
 }
+/* ================分割线==================== */
 /* container */
 .admin__wrapper .route__view_container .container {
-  min-height: 700px;
   padding: 50px 40px;
 }
+/* home ui */
+.admin__wrapper .route__view_container .container .home {
+  min-height: 500px;
+  text-align: center;
+  margin-top: 80px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 38px;
+}
+/* article__list ui */
+.admin__wrapper .route__view_container .container .article__list {
+  width: 100%;
+  height: 100%;
+}
+.admin__wrapper .route__view_container .container .article__list button {
+  border-radius: 8px;
+}
+.admin__wrapper .route__view_container .container .article__list button a {
+  text-decoration: none;
+  font-size: 20px;
+}
+/* articleForm ui */
+.admin__wrapper .route__view_container .container .article__form {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+}
+/* category ui */
+.admin__wrapper .route__view_container .container .category {
+  width: 100%;
+  height: 100%;
+}
+/* leave__message ui */
+.admin__wrapper .route__view_container .container .leave__message {
+  width: 100%;
+  height: 100%;
+}
+.leave__message .leave__message-list {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.leave__message .leave__message-list .leave-item-header {
+  height: 40px;
+  line-height: 40px;
+  color: #000;
+  border-bottom: 1px solid #888;
+  margin-bottom: 10px;
+}
+.leave__message .leave__message-list .leave-item-header span {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+.leave__message .leave__message-list .leave-item {
+  height: 35px;
+  line-height: 35px;
+  padding: 10px 0;
+  color: #bbb;
+}
+.leave__message .leave__message-list .leave-item span {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+.leave__message .leave__message-list .leave-item span:last-child {
+  color: red;
+  cursor: pointer;
+}
+/* =================分割线=================== */
 /* footer */
 .admin__wrapper .route__view_container .footer {
   height: 50px;
