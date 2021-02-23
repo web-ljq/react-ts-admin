@@ -20,8 +20,8 @@ const serverPath = {
   getCategoryById: apiUrl + "getCategoryById?_id=", //获取文章分类ById
   category: apiUrl + "category", //获取文章分类
   // leaveMessage
-  getLeaveMessage: apiUrl + "addLeaveMessage", // 添加留言
-  getLeaveMessage: apiUrl + "delLeaveMessage", // 删除列表
+  addLeaveMessage: apiUrl + "addLeaveMessage", // 添加留言
+  delLeaveMessage: apiUrl + "delLeaveMessage?_id=", // 删除列表
   getLeaveMessage: apiUrl + "leaveMessageList", // 留言列表
 
   // frontend

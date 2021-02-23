@@ -20,6 +20,17 @@ const LeaveMessage = () => {
       });
   }
 
+  const delLeaveMessage = (id) => {
+    axios
+      .get(serverPath.delLeaveMessage + id)
+      .then((res) => {
+        getLeaveMessageList();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className="leave__message">
       <div className="leave__message-list">
@@ -34,7 +45,7 @@ const LeaveMessage = () => {
             <span>{item.email}</span>
             <span>{item.nickname}</span>
             <span>{item.createdAt}</span>
-            <span>删除</span>
+            <span onClick={() => delLeaveMessage(item._id)}>删除</span>
           </div>
         ))}
       </div>
