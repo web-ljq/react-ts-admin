@@ -40,6 +40,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^17.0.0"
+    "@types/react": "^17.0.0",
+    "less": "^4.1.1",
+    "less-loader": "^8.0.0"
   }
 }
